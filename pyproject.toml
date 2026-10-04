@@ -14,11 +14,16 @@ dependencies = [
     "pandas>=3.0.6",
     "scikit-learn>=1.9.1",
     "seaborn>=0.13.2",
+    "uvicorn>=0.54.0",
 ]
 
 [project.scripts]
-heart-disease = "heart_disease:main"
+heart-disease = "heart_disease.backend.main:start"
 
 [build-system]
 requires = ["uv_build>=0.12.7,<0.13.0"]
 build-backend = "uv_build"
+
+
+[tool.fastapi]
+entrypoint = "heart_disease.backend.main:app"
