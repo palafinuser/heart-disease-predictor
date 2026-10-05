@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from . import schemas
+from .schemas import PatientData, PredictionResponse
 from .model import model
 import pandas as pd
+import uvicorn
 
 app = FastAPI()
 app.add_middleware(
@@ -17,8 +18,12 @@ app.add_middleware(
 def root():
     return {"message": "Heart Disease Predictor API"}
 
-@app.post("/predict", response_model=schemas.PredictionResponse)
-def predict(data: schemas.PatientData):
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+@app.post("/predict", response_model=PredictionResponse)
+def predict(data: PatientData):
     patient = pd.DataFrame([data.model_dump()])
 
     prediction = model.predict(patient)[0]
@@ -33,3 +38,7 @@ def predict(data: schemas.PatientData):
         else "No heart disease detected"
         )
     }
+
+
+def start() -> None:
+    uvicorn.run("heart_disease.backend.app.main:app", host="127.0.0.1", port=8000, reload=True)
