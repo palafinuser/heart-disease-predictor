@@ -1,0 +1,426 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background: #f5f4ed;
+  color: #26332b;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 50px 20px;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      #e4eadf 0%,
+      #f5f4ed 48%
+    );
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.header h1 {
+  margin: 0 0 10px;
+  color: #26332b;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.header p {
+  margin: 0;
+  color: #6b756e;
+  font-size: 15px;
+}
+
+/* ---------- Form ---------- */
+
+.prediction-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+
+  padding: 30px;
+
+  background: #fffefa;
+  border: 1px solid #d9dfd5;
+  border-radius: 18px;
+
+  box-shadow: 0 18px 45px rgba(52, 67, 57, 0.08);
+}
+
+/* ---------- Section headings ---------- */
+
+.form-section-title {
+  grid-column: 1 / -1;
+
+  margin-top: 8px;
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid #dfe4dc;
+}
+
+.form-section-title:first-child {
+  margin-top: 0;
+}
+
+.form-section-title h2 {
+  margin: 0 0 4px;
+
+  color: #39483e;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.form-section-title p {
+  margin: 0;
+
+  color: #89938c;
+  font-size: 13px;
+}
+
+/* ---------- Form fields ---------- */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #4a574e;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-input {
+  width: 100%;
+  padding: 11px 12px;
+
+  background: #f9f9f4;
+  border: 1px solid #cfd7cd;
+  border-radius: 8px;
+
+  color: #26332b;
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.form-input:hover {
+  border-color: #aebaae;
+}
+
+.form-input:focus {
+  outline: none;
+  background: #fffefa;
+  border-color: #7c987f;
+  box-shadow: 0 0 0 3px rgba(124, 152, 127, 0.15);
+}
+
+.form-input option {
+  background: #fffefa;
+  color: #26332b;
+}
+
+/* ---------- Info tooltip ---------- */
+
+.info-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.info-button {
+  width: 17px;
+  height: 17px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #9aa89d;
+  border-radius: 50%;
+
+  color: #718174;
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: help;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.info-button:hover {
+  color: #536e59;
+  border-color: #7c987f;
+  background: #edf2ea;
+}
+
+.tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 9px);
+
+  width: 230px;
+  padding: 10px 12px;
+
+  transform: translateX(-50%);
+
+  background: #35443a;
+  border: 1px solid #526359;
+  border-radius: 8px;
+
+  color: #f4f5ef;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  box-shadow: 0 10px 25px rgba(52, 67, 57, 0.18);
+
+  transition:
+    opacity 0.15s ease,
+    visibility 0.15s ease;
+
+  z-index: 20;
+}
+
+.info-wrapper:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ---------- Predict button ---------- */
+
+.predict-button {
+  grid-column: 1 / -1;
+
+  margin-top: 4px;
+  padding: 13px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #718d76;
+  color: #fffefa;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+.predict-button:hover {
+  background: #607b65;
+  box-shadow: 0 5px 14px rgba(96, 123, 101, 0.2);
+}
+
+.predict-button:active {
+  transform: translateY(1px);
+}
+
+.predict-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---------- Error ---------- */
+
+.error-card {
+  margin-top: 20px;
+  padding: 15px 18px;
+
+  background: #f8eaea;
+  border: 1px solid #e2bcbc;
+  border-radius: 12px;
+
+  color: #9b4b4b;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ---------- Result ---------- */
+
+.result-card {
+  margin-top: 24px;
+  padding: 28px;
+
+  background: #fffefa;
+  border: 1px solid #d9dfd5;
+  border-radius: 18px;
+
+  text-align: center;
+
+  box-shadow: 0 18px 45px rgba(52, 67, 57, 0.08);
+}
+
+.result-card h2 {
+  margin: 0 0 18px;
+
+  color: #39483e;
+  font-size: 20px;
+}
+
+.result-negative {
+  border-color: #a9bea9;
+}
+
+.result-positive {
+  border-color: #d4a4a4;
+}
+
+.result-text {
+  margin: 0 0 24px;
+
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.result-negative .result-text {
+  color: #5d7d63;
+}
+
+.result-positive .result-text {
+  color: #a65c5c;
+}
+
+/* ---------- Probability ---------- */
+
+.probability {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 9px;
+
+  color: #7a857d;
+  font-size: 13px;
+}
+
+.probability strong {
+  color: #39483e;
+  font-size: 19px;
+}
+
+.probability-bar {
+  width: 100%;
+  height: 9px;
+
+  overflow: hidden;
+
+  background: #e7ebe4;
+  border-radius: 999px;
+}
+
+.probability-fill {
+  height: 100%;
+
+  background: #7c987f;
+  border-radius: inherit;
+
+  transition: width 0.5s ease;
+}
+
+.result-positive .probability-fill {
+  background: #b56b6b;
+}
+
+/* ---------- Disclaimer ---------- */
+
+.disclaimer {
+  max-width: 600px;
+
+  margin: 20px auto 0;
+
+  color: #89938c;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 650px) {
+  .app {
+    padding: 30px 15px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+  }
+
+  .prediction-form {
+    grid-template-columns: 1fr;
+    padding: 22px;
+    gap: 20px;
+  }
+
+  .predict-button {
+    grid-column: auto;
+  }
+
+  .tooltip {
+    left: 0;
+    transform: none;
+  }
+}
+
+/* Remove browser-native number spinners */
+.form-input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.form-input[type="number"]::-webkit-inner-spin-button,
+.form-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-input option {
+  background: #fffefa;
+  color: #26332b;
+}
+
+.form-input option:hover,
+.form-input option:checked {
+  background: #dfe8dc;
+  color: #26332b;
+}
