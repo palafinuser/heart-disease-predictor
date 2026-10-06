@@ -1,6 +1,4 @@
-from pathlib import Path
-
-readme = """# Heart Disease Predictor
+# Heart Disease Predictor
 
 A full-stack machine learning application that predicts the presence of heart disease from clinical measurements.
 
