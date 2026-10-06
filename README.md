@@ -388,8 +388,3 @@ Potential future work includes:
 ## License
 
 This project is intended as an demonstration and portfolio project.
-"""
-
-path = Path("/mnt/data/README.md")
-path.write_text(readme, encoding="utf-8")
-print(path)
