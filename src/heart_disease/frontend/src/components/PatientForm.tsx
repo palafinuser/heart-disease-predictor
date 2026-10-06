@@ -71,7 +71,7 @@ function PatientForm({
 
     onLoading(true)
     onError("")
-    onResult(null as unknown as PredictionResult)
+    onResult(null)
 
     const patient: PatientData = {
       age: Number(form.age),
