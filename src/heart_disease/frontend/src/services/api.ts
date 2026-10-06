@@ -23,7 +23,7 @@ export type PredictionResult = {
 export async function predictHeartDisease(
   patient: PatientData
 ): Promise<PredictionResult> {
-  const response = await fetch("http://localhost:8000/predict", {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/predict`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
